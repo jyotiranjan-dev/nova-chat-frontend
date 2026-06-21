@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-nova-border;
+  }
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-nova-bg text-nova-text font-body antialiased;
+  }
+  ::selection {
+    background: rgba(79, 156, 249, 0.35);
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2a3552;
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a4666;
+  }
+
+  /* Visible keyboard focus everywhere, no outline removal */
+  :focus-visible {
+    outline: 2px solid #4f9cf9;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+
+  textarea {
+    field-sizing: content;
+  }
+}
+
+@layer components {
+  .nova-input {
+    @apply w-full bg-nova-card border border-nova-border rounded-nova-sm px-3.5 py-2.5 text-sm text-nova-text outline-none transition-colors placeholder:text-nova-textFaint;
+  }
+  .nova-input:focus {
+    border-color: #4f9cf9;
+    box-shadow: 0 0 0 3px rgba(79, 156, 249, 0.12);
+  }
+  .nova-btn-primary {
+    @apply w-full bg-nova-primary text-white font-semibold text-sm py-2.5 rounded-nova-sm transition-colors active:scale-[0.98];
+  }
+  .nova-btn-primary:hover {
+    background: #6bafff;
+  }
+  .nova-btn-primary:disabled {
+    @apply opacity-60 cursor-default active:scale-100;
+  }
+  .nova-btn-secondary {
+    @apply w-full bg-nova-elevated text-nova-textSoft font-semibold text-sm py-2.5 rounded-nova-sm transition-colors hover:bg-nova-borderLight;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(20, 27, 45, 0.72);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+  }
+
+  .nova-id-pill {
+    background: linear-gradient(
+      90deg,
+      #4f9cf9,
+      #ffb454,
+      #4f9cf9
+    );
+    background-size: 200% auto;
+    animation: border-flow 4s linear infinite;
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, #141b2d 0%, #1b2438 50%, #141b2d 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
